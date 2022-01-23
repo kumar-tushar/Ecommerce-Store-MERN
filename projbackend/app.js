@@ -13,7 +13,6 @@ mongoose.connect(process.env.DATABASE)
 
 app.use(bodyParser.json());
 app.use(cookieParser());
-// noinspection JSCheckFunctionSignatures
 app.use(cors());
 
 app.use("/api", authRoutes);
