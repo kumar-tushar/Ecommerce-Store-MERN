@@ -6,6 +6,7 @@ const cors = require('cors')
 const app = express();
 const authRoutes=require('./routes/auth')
 const userRoutes=require('./routes/user')
+const categoryRoutes=require('./routes/category')
 require('dotenv').config();
 
 mongoose.connect(process.env.DATABASE)
@@ -18,6 +19,7 @@ app.use(cors());
 
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
+app.use("/api", categoryRoutes);
 
 const port = process.env.PORT || 8000;
 
