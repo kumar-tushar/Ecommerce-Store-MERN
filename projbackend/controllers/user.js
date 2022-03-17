@@ -13,11 +13,13 @@ exports.getUserById = (req, res, next, id) => {
     });
 };
 
+
 exports.getUser = (req, res) => {
     req.profile.salt = undefined;
     req.profile.encry_password = undefined;
     return res.json(req.profile);
 };
+
 
 exports.updateUser = (req, res) => {
     User.findByIdAndUpdate(
@@ -37,6 +39,7 @@ exports.updateUser = (req, res) => {
     );
 };
 
+
 exports.userPurchaseList = (req, res) => {
     Order.find({ user: req.profile._id })
         .populate("user", "_id name")
@@ -49,6 +52,7 @@ exports.userPurchaseList = (req, res) => {
             return res.json(order);
         });
 };
+
 
 exports.pushOrderInPurchaseList = (req, res, next) => {
     let purchases = [];

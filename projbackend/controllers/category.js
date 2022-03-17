@@ -12,6 +12,7 @@ exports.getCategoryById = (req, res, next, id) => {
     });
 };
 
+
 exports.createCategory = (req, res) => {
     const category = new Category(req.body);
     category.save((err, category) => {
@@ -24,9 +25,11 @@ exports.createCategory = (req, res) => {
     });
 };
 
+
 exports.getCategory = (req, res) => {
     return res.json(req.category);
 };
+
 
 exports.getAllCategory = (req, res) => {
     Category.find().exec((err, categories) => {
@@ -38,6 +41,7 @@ exports.getAllCategory = (req, res) => {
         res.json(categories);
     });
 };
+
 
 exports.updateCategory = (req, res) => {
     const category = req.category;
@@ -52,6 +56,7 @@ exports.updateCategory = (req, res) => {
         res.json(updatedCategory);
     });
 };
+
 
 exports.removeCategory = (req, res) => {
     const category = req.category;

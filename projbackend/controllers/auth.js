@@ -5,7 +5,6 @@ const expressJwt = require("express-jwt");
 
 exports.signup = (req, res) => {
   const errors = validationResult(req);
-
   if (!errors.isEmpty()) {
     return res.status(422).json({
       error: errors.array()[0].msg
@@ -26,6 +25,7 @@ exports.signup = (req, res) => {
     });
   });
 };
+
 
 exports.signin = (req, res) => {
   const errors = validationResult(req);
@@ -59,6 +59,7 @@ exports.signin = (req, res) => {
   });
 };
 
+
 exports.signout = (req, res) => {
   res.clearCookie("token");
   res.json({
@@ -66,10 +67,12 @@ exports.signout = (req, res) => {
   });
 };
 
+
 exports.isSignedIn = expressJwt({
   secret:"process.env.SECRET",
   userProperty: "auth"
 });
+
 
 exports.isAuthenticated = (req, res, next) => {
   let checker = req.profile && req.auth && req.profile._id == req.auth._id;
@@ -80,6 +83,7 @@ exports.isAuthenticated = (req, res, next) => {
   }
   next();
 };
+
 
 exports.isAdmin = (req, res, next) => {
   if (req.profile.role === 0) {

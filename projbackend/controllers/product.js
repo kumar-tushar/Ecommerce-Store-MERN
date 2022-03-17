@@ -17,6 +17,7 @@ exports.getProductById = (req, res, next, id) => {
         });
 };
 
+
 exports.createProduct = (req, res) => {
     let form = new formidable.IncomingForm();
     form.keepExtensions = true;
@@ -27,7 +28,7 @@ exports.createProduct = (req, res) => {
                 error: "problem with image"
             });
         }
-        //destructure the fields
+
         const { name, description, price, category, stock } = fields;
 
         if (!name || !description || !price || !category || !stock) {
@@ -38,7 +39,6 @@ exports.createProduct = (req, res) => {
 
         let product = new Product(fields);
 
-        //handle file here
         if (file.photo) {
             if (file.photo.size > 3000000) {
                 return res.status(400).json({
@@ -48,9 +48,7 @@ exports.createProduct = (req, res) => {
             product.photo.data = fs.readFileSync(file.photo.path);
             product.photo.contentType = file.photo.type;
         }
-        // console.log(product);
 
-        //save to the DB
         product.save((err, product) => {
             if (err) {
                 res.status(400).json({
@@ -62,12 +60,13 @@ exports.createProduct = (req, res) => {
     });
 };
 
+
 exports.getProduct = (req, res) => {
     req.product.photo = undefined;
     return res.json(req.product);
 };
 
-//middleware
+
 exports.photo = (req, res, next) => {
     if (req.product.photo.data) {
         res.set("Content-Type", req.product.photo.contentType);
@@ -76,7 +75,7 @@ exports.photo = (req, res, next) => {
     next();
 };
 
-// delete controllers
+
 exports.deleteProduct = (req, res) => {
     let product = req.product;
     product.remove((err, deletedProduct) => {
@@ -92,7 +91,7 @@ exports.deleteProduct = (req, res) => {
     });
 };
 
-// delete controllers
+
 exports.updateProduct = (req, res) => {
     let form = new formidable.IncomingForm();
     form.keepExtensions = true;
@@ -104,11 +103,9 @@ exports.updateProduct = (req, res) => {
             });
         }
 
-        //updation code
         let product = req.product;
         product = _.extend(product, fields);
 
-        //handle file here
         if (file.photo) {
             if (file.photo.size > 3000000) {
                 return res.status(400).json({
@@ -118,9 +115,7 @@ exports.updateProduct = (req, res) => {
             product.photo.data = fs.readFileSync(file.photo.path);
             product.photo.contentType = file.photo.type;
         }
-        // console.log(product);
 
-        //save to the DB
         product.save((err, product) => {
             if (err) {
                 res.status(400).json({
@@ -132,7 +127,6 @@ exports.updateProduct = (req, res) => {
     });
 };
 
-//product listing
 
 exports.getAllProducts = (req, res) => {
     let limit = req.query.limit ? parseInt(req.query.limit) : 8;
@@ -153,6 +147,7 @@ exports.getAllProducts = (req, res) => {
         });
 };
 
+
 exports.getAllUniqueCategories = (req, res) => {
     Product.distinct("category", {}, (err, category) => {
         if (err) {
@@ -163,6 +158,7 @@ exports.getAllUniqueCategories = (req, res) => {
         res.json(category);
     });
 };
+
 
 exports.updateStock = (req, res, next) => {
     let myOperations = req.body.order.products.map(prod => {
