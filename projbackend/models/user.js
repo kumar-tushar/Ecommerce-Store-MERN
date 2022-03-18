@@ -42,6 +42,7 @@ let userSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
+
 userSchema
     .virtual("password")
     .set(function(password) {
@@ -52,6 +53,7 @@ userSchema
     .get(function() {
         return this._password;
     });
+
 
 userSchema.methods = {
     authenticate: function(plainpassword) {
@@ -70,5 +72,6 @@ userSchema.methods = {
         }
     }
 };
+
 
 module.exports = mongoose.model("User", userSchema);

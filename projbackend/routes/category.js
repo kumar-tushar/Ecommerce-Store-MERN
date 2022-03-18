@@ -5,7 +5,6 @@ const { getCategoryById, createCategory, getCategory, getAllCategory, updateCate
 const { isSignedIn, isAdmin, isAuthenticated } = require("../controllers/auth");
 const { getUserById } = require("../controllers/user");
 
-
 router.param("userId", getUserById);
 router.param("categoryId", getCategoryById);
 

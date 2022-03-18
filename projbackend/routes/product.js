@@ -18,7 +18,6 @@ router.delete("/product/:productId/:userId", isSignedIn, isAuthenticated, isAdmi
 router.put("/product/:productId/:userId", isSignedIn, isAuthenticated, isAdmin, updateProduct);
 
 router.get("/products", getAllProducts);
-
 router.get("/products/categories", getAllUniqueCategories);
 
 module.exports = router;
