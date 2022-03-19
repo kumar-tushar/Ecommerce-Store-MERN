@@ -25,4 +25,4 @@ app.use("/api", orderRoutes);
 
 const port = process.env.PORT || 8000;
 
-app.listen(port, () => {console.log(`app is running at ${port}`)});
+app.listen(port, () => {console.log(`App is running @ http://localhost:${port}`)});

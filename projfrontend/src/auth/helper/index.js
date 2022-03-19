@@ -50,7 +50,7 @@ export const signout = next => {
     }
 };
 
-export const isAuthenticated = () => {
+export const isAutheticated = () => {
     if (typeof window == "undefined") {
         return false;
     }

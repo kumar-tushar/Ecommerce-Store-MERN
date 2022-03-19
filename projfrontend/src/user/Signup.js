@@ -50,6 +50,7 @@ const Signup = () => {
                                 className="form-control"
                                 onChange={handleChange("name")}
                                 type="text"
+                                value={name}
                             />
                         </div>
                         <div className="form-group">
@@ -58,6 +59,7 @@ const Signup = () => {
                                 className="form-control"
                                 onChange={handleChange("email")}
                                 type="email"
+                                value={email}
                             />
                         </div>
 
@@ -67,6 +69,7 @@ const Signup = () => {
                                 onChange={handleChange("password")}
                                 className="form-control"
                                 type="password"
+                                value={password}
                             />
                         </div>
                         <button onClick={onSubmit} className="btn btn-success btn-block">
@@ -78,10 +81,43 @@ const Signup = () => {
         );
     };
 
+    const successMessage = () => {
+        return (
+            <div className="row">
+                <div className="col-md-6 offset-sm-3 text-left">
+                    <div
+                        className="alert alert-success"
+                        style={{ display: success ? "" : "none" }}
+                    >
+                        New account was created successfully. Please
+                        <Link to="/signin">Login Here</Link>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
+    const errorMessage = () => {
+        return (
+            <div className="row">
+                <div className="col-md-6 offset-sm-3 text-left">
+                    <div
+                        className="alert alert-danger"
+                        style={{ display: error ? "" : "none" }}
+                    >
+                        {error}
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
     return (
         <Base title="Sign up page" description="A page for user to sign up!">
+            {successMessage()}
+            {errorMessage()}
             {signUpForm()}
-            <p className="text-light text-center">{JSON.stringify(values)}</p>
+            <p className="text-white text-center">{JSON.stringify(values)}</p>
         </Base>
     );
 };
