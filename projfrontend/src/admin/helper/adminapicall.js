@@ -1,6 +1,5 @@
 import { API } from "../../backend";
 
-//category calls
 export const createCategory = (userId, token, category) => {
     return fetch(`${API}/category/create/${userId}`, {
         method: "POST",
@@ -17,7 +16,7 @@ export const createCategory = (userId, token, category) => {
         .catch(err => console.log(err));
 };
 
-//get all categories
+
 export const getCategories = () => {
     return fetch(`${API}/categories`, {
         method: "GET"
@@ -28,9 +27,7 @@ export const getCategories = () => {
         .catch(err => console.log(err));
 };
 
-//products calls
 
-//create a product
 export const createaProduct = (userId, token, product) => {
     return fetch(`${API}/product/create/${userId}`, {
         method: "POST",
@@ -46,7 +43,7 @@ export const createaProduct = (userId, token, product) => {
         .catch(err => console.log(err));
 };
 
-//get all products
+
 export const getProducts = () => {
     return fetch(`${API}/products`, {
         method: "GET"
@@ -57,7 +54,6 @@ export const getProducts = () => {
         .catch(err => console.log(err));
 };
 
-//delete a product
 
 export const deleteProduct = (productId, userId, token) => {
     return fetch(`${API}/product/${productId}/${userId}`, {
@@ -73,7 +69,6 @@ export const deleteProduct = (productId, userId, token) => {
         .catch(err => console.log(err));
 };
 
-//get a product
 
 export const getProduct = productId => {
     return fetch(`${API}/product/${productId}`, {
@@ -85,7 +80,6 @@ export const getProduct = productId => {
         .catch(err => console.log(err));
 };
 
-//update a product
 
 export const updateProduct = (productId, userId, token, product) => {
     return fetch(`${API}/product/${productId}/${userId}`, {
