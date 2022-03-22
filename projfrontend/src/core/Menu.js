@@ -34,7 +34,7 @@ const Menu = ({ history }) => (
                         className="nav-link"
                         to="/user/dashboard"
                     >
-                        User Dashboard
+                        U. Dashboard
                     </Link>
                 </li>
             )}
@@ -45,7 +45,7 @@ const Menu = ({ history }) => (
                         className="nav-link"
                         to="/admin/dashboard"
                     >
-                        Admin Dashboard
+                        A. Dashboard
                     </Link>
                 </li>
             )}
