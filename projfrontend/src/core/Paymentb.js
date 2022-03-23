@@ -21,12 +21,11 @@ const Paymentb = ({ products, setReload = f => f, reload = undefined }) => {
 
     const getToken = (userId, token) => {
         getmeToken(userId, token).then(info => {
-            // console.log("INFORMATION", info);
             if (info.error) {
                 setInfo({ ...info, error: info.error });
             } else {
                 const clientToken = info.clientToken;
-                setInfo({ clientToken });
+                setInfo(clientToken);
             }
         });
     };

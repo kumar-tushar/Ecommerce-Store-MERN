@@ -1,6 +1,6 @@
-const braintree = require("braintree");
+let braintree = require("braintree");
 
-const gateway = braintree.connect({
+let gateway = braintree.connect({
     environment: braintree.Environment.Sandbox,
     merchantId: "djp5xyv8ps26srnn",
     publicKey: "vg37qcj2z7yyjknv",
@@ -32,9 +32,9 @@ exports.processPayment = (req, res) => {
         },
         function(err, result) {
             if (err) {
-                res.status(500).json(error);
+                res.status(500).send(error);
             } else {
-                res.json(result);
+                res.send(result);
             }
         }
     );
