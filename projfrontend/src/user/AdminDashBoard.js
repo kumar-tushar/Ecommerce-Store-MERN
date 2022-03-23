@@ -19,11 +19,6 @@ const AdminDashBoard = () => {
                         </Link>
                     </li>
                     <li className="list-group-item">
-                        <Link to="/admin/categories" className="nav-link text-success">
-                            Manage Categories
-                        </Link>
-                    </li>
-                    <li className="list-group-item">
                         <Link to="/admin/create/product" className="nav-link text-success">
                             Create Product
                         </Link>
@@ -60,20 +55,19 @@ const AdminDashBoard = () => {
                     </li>
                 </ul>
             </div>
+
         );
     };
+
     return (
-        <Base
-            title="Welcome to admin area"
-            description="Manage all of your products here"
-            className="container bg-success p-4"
-        >
-            <div className="row">
+        <Base title="Welcome to Admin Dashboard" description="Manage all of your products here" className="container bg-success p-4">
+            <div className="row" >
                 <div className="col-3">{adminLeftSide()}</div>
                 <div className="col-9">{adminRightSide()}</div>
             </div>
         </Base>
     );
 };
+
 
 export default AdminDashBoard;
