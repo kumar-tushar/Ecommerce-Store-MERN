@@ -39,9 +39,12 @@ const Paymentb = ({ products, setReload = f => f, reload = undefined }) => {
                             options={{ authorization: info.clientToken }}
                             onInstance={instance => (info.instance = instance)}
                         />
-                        <button className="btn btn-block btn-success" onClick={onPurchase}>
+                        <a href="https://www.braintreegateway.com/login">
+                            <button className="btn btn-block btn-success" onClick={onPurchase}>
                             Buy
-                        </button>
+                            </button>
+                        </a>
+
                     </div>
                 ) : (
                     <h3>Please login or add something to cart</h3>

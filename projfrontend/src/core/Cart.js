@@ -17,7 +17,7 @@ const Cart = () => {
     const loadAllProducts = products => {
         return (
             <div>
-                <h2>This section is to load products</h2>
+                <h2>Your Products</h2>
                 {products.map((product, index) => (
                     <Card
                         key={index}
@@ -46,7 +46,7 @@ const Cart = () => {
                     {products.length > 0 ? (
                         loadAllProducts(products)
                     ) : (
-                        <h4>No products</h4>
+                        <h4>No Products</h4>
                     )}
                 </div>
                 <div className="col-6">
