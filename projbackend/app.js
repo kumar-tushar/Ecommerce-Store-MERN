@@ -3,7 +3,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require('cors')
-const app = express();
 const authRoutes=require('./routes/auth')
 const userRoutes=require('./routes/user')
 const categoryRoutes=require('./routes/category')
@@ -12,6 +11,8 @@ const orderRoutes=require('./routes/order')
 const paymentBRoutes=require('./routes/paymentBRoutes')
 
 require('dotenv').config();
+
+const app = express();
 
 mongoose.connect(process.env.DATABASE).then(() => console.log("DB CONNECTED")).catch(()=> console.log("DB NOT CONNECTED"));
 
@@ -26,5 +27,6 @@ app.use("/api", orderRoutes);
 app.use("/api", paymentBRoutes);
 
 const port = process.env.PORT || 8000;
+
 
 app.listen(port, () => {console.log(`App is running @ http://localhost:${port}`)});
